@@ -1,4 +1,4 @@
-#WRITTEN BY MANJAKA
+#WRITTEN BY MANJAKa
 #FOLLOW : https://github.com/MANJAKA-305
 #------------- import -------------#
 import os
